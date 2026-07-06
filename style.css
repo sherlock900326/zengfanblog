@@ -1,0 +1,208 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #f9f9f7;
+  color: #1a1a1a;
+  line-height: 1.7;
+}
+
+/* HEADER */
+header {
+  background: #0f1117;
+  padding: 0 24px;
+}
+.header-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.logo {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: -0.3px;
+}
+.logo span { color: #4f8ef7; }
+nav a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-left: 24px;
+  transition: color 0.2s;
+}
+nav a:hover { color: #fff; }
+
+/* HERO (index only) */
+.hero {
+  background: #0f1117;
+  padding: 56px 24px 64px;
+  text-align: center;
+  border-bottom: 1px solid #222;
+}
+.hero h1 {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  max-width: 640px;
+  margin: 0 auto 16px;
+  line-height: 1.3;
+}
+.hero p {
+  color: #888;
+  font-size: 1rem;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ARTICLE GRID */
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 24px;
+}
+.article-list { display: flex; flex-direction: column; gap: 24px; }
+
+.article-card {
+  background: #fff;
+  border: 1px solid #e8e8e4;
+  border-radius: 10px;
+  padding: 28px 32px;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.article-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  border-color: #c8c8c0;
+}
+.article-card .meta {
+  font-size: 0.8rem;
+  color: #999;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.tag {
+  background: #eef3ff;
+  color: #4f8ef7;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.article-card h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  color: #111;
+}
+.article-card p {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* ARTICLE PAGE */
+.article-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 24px 100px;
+}
+.article-wrap .back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #888;
+  text-decoration: none;
+  font-size: 0.85rem;
+  margin-bottom: 36px;
+  transition: color 0.2s;
+}
+.article-wrap .back:hover { color: #333; }
+.article-wrap .back::before { content: "←"; }
+
+.article-header { margin-bottom: 40px; }
+.article-header .tag-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.article-header h1 {
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #0f1117;
+  margin-bottom: 16px;
+}
+.article-header .meta {
+  font-size: 0.85rem;
+  color: #999;
+}
+.article-header .meta strong { color: #555; }
+
+.article-body { font-size: 1rem; line-height: 1.8; color: #2a2a2a; }
+.article-body h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 40px 0 14px;
+  color: #0f1117;
+}
+.article-body h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 28px 0 10px;
+  color: #111;
+}
+.article-body p { margin-bottom: 18px; }
+.article-body ul, .article-body ol {
+  margin: 0 0 18px 24px;
+}
+.article-body li { margin-bottom: 8px; }
+.article-body strong { color: #111; }
+.article-body em { color: #444; }
+.article-body blockquote {
+  border-left: 3px solid #4f8ef7;
+  padding: 12px 20px;
+  margin: 24px 0;
+  background: #f0f5ff;
+  border-radius: 0 6px 6px 0;
+  color: #444;
+  font-style: italic;
+}
+.article-body hr {
+  border: none;
+  border-top: 1px solid #e8e8e4;
+  margin: 36px 0;
+}
+
+/* FOOTER */
+footer {
+  background: #0f1117;
+  text-align: center;
+  padding: 32px 24px;
+  color: #555;
+  font-size: 0.82rem;
+}
+footer a { color: #4f8ef7; text-decoration: none; }
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 1.5rem; }
+  .article-card { padding: 20px; }
+  .article-header h1 { font-size: 1.5rem; }
+}
