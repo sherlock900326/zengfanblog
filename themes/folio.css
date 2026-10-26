@@ -1,0 +1,32 @@
+body { display: grid; grid-template-columns: minmax(310px, 40%) minmax(0, 60%); background: #f8f4eb; color: #302b25; font-family: Georgia, "Times New Roman", serif; }
+header, footer, .article-wrap { grid-column: 1 / -1; }
+header { background: #f8f4eb; border-bottom: 1px solid #cbbfa9; }
+.header-inner { max-width: none; padding: 0 4vw; }
+.logo { color: #302b25; font-family: Georgia, serif; font-size: 1.6rem; }
+.logo span { color: #ad5838; }
+nav a { color: #594f42; font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.hero { position: sticky; top: 0; align-self: start; display: flex; flex-direction: column; justify-content: center; min-height: calc(100vh - 64px); padding: 8vw 5vw; text-align: left; background: #d7dfd5; border-right: 1px solid #a8b6a8; border-bottom: 0; }
+.hero h1 { max-width: 520px; margin: 0 0 28px; color: #254037; font-family: Georgia, serif; font-size: clamp(2.8rem, 4vw, 5.3rem); font-weight: 400; letter-spacing: -.06em; line-height: 1.04; }
+.hero p { max-width: 430px; margin: 0; color: #4d675c; font-family: Georgia, serif; font-size: 1.15rem; }
+.container { width: 100%; max-width: none; padding: 64px 5vw 100px; }
+.section-label { color: #ad5838; letter-spacing: .2em; }
+.article-list { gap: 0; }
+.article-card { padding: 30px 0; background: transparent; border: 0; border-top: 1px solid #cbbfa9; border-radius: 0; }
+.article-card:hover { box-shadow: none; border-color: #ad5838; }
+.article-card .meta { color: #7a6a5d; }
+.tag { color: #ad5838; background: transparent; padding: 0; text-transform: uppercase; letter-spacing: .1em; }
+.article-card h2 { color: #302b25; font-family: Georgia, serif; font-size: clamp(1.5rem, 2vw, 2.2rem); font-weight: 400; letter-spacing: -.04em; }
+.article-card p { color: #665a4d; font-family: Georgia, serif; font-size: 1rem; }
+.article-wrap { max-width: 850px; padding-top: 90px; }
+.article-header { padding-bottom: 32px; border-bottom: 1px solid #cbbfa9; }
+.article-header h1 { color: #302b25; font-family: Georgia, serif; font-size: clamp(2.3rem, 4vw, 3.6rem); font-weight: 400; letter-spacing: -.04em; }
+.article-body { font-family: Georgia, serif; font-size: 1.1rem; }
+.article-body h2, .article-body h3 { color: #302b25; font-family: Georgia, serif; }
+.article-body blockquote { background: #e6ebe3; border-color: #4d675c; }
+footer { background: #e5e0d5; border-top: 1px solid #cbbfa9; color: #685e52; }
+footer a { color: #ad5838; }
+@media (max-width: 900px) {
+  body { display: block; }
+  .hero { position: static; min-height: 0; padding: 72px 24px; border-right: 0; border-bottom: 1px solid #a8b6a8; }
+  .container { padding: 48px 24px 80px; }
+}

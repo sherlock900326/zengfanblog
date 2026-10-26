@@ -1,0 +1,35 @@
+body { background: #f4f2ff; color: #28244b; }
+header { background: #29234e; }
+.header-inner, .container { max-width: 1240px; }
+.logo { font-size: 1.4rem; letter-spacing: -.06em; }
+.logo span { color: #ffd974; }
+nav a { color: #e7dfff; }
+.hero { padding: 94px 24px; background: radial-gradient(circle at 80% 10%, #ffb0ad, transparent 32%), linear-gradient(120deg, #d7cdfb, #f6d3d9); border-bottom: 0; }
+.hero h1 { max-width: 960px; color: #29234e; font-size: clamp(2.8rem, 5vw, 5.2rem); font-weight: 850; letter-spacing: -.07em; line-height: 1.03; }
+.hero p { color: #50476c; font-size: 1.12rem; }
+.container { padding-top: 58px; }
+.section-label { color: #5a3aae; letter-spacing: .18em; }
+.article-list { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 18px; }
+.article-card { grid-column: span 4; display: flex; flex-direction: column; min-height: 320px; padding: 30px; background: #fff; border: 0; border-radius: 28px; box-shadow: 0 6px 0 #d8d2e7; transition: transform .2s, box-shadow .2s; }
+.article-card:nth-child(7n + 1), .article-card:nth-child(7n + 5) { grid-column: span 8; background: #d7cdfb; }
+.article-card:nth-child(7n + 2) { background: #ffdfcf; }
+.article-card:nth-child(7n + 4) { background: #cff0dd; }
+.article-card:nth-child(7n + 6) { background: #ffe9a9; }
+.article-card:hover { transform: translateY(-5px); box-shadow: 0 11px 0 #d8d2e7; }
+.article-card .meta { color: #5c5378; }
+.tag { color: #4f359a; background: rgba(255,255,255,.6); border-radius: 100px; padding: 4px 10px; }
+.article-card h2 { color: #29234e; font-size: clamp(1.25rem, 2vw, 1.85rem); letter-spacing: -.05em; }
+.article-card p { color: #50476c; margin-top: auto; }
+.article-wrap { max-width: 790px; }
+.article-header h1 { color: #29234e; font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: -.05em; }
+.article-body h2, .article-body h3 { color: #29234e; }
+.article-body blockquote { background: #ded6fa; border-color: #6a4ab7; }
+footer { background: #29234e; color: #d0c5eb; }
+footer a { color: #ffd974; }
+@media (max-width: 900px) {
+  .article-card, .article-card:nth-child(7n + 1), .article-card:nth-child(7n + 5) { grid-column: span 6; }
+}
+@media (max-width: 620px) {
+  .hero { padding: 70px 24px; }
+  .article-card, .article-card:nth-child(7n + 1), .article-card:nth-child(7n + 5) { grid-column: 1 / -1; min-height: 0; }
+}

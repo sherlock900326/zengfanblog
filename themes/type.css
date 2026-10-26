@@ -1,0 +1,32 @@
+body { background: #fcfcfa; color: #181818; font-family: Georgia, "Times New Roman", serif; }
+header { background: #fcfcfa; border-bottom: 2px solid #181818; }
+.header-inner, .container { max-width: 1180px; }
+.logo { color: #181818; font-family: Georgia, serif; font-size: 1.45rem; font-weight: 400; }
+.logo span { color: #a22525; }
+nav a { color: #181818; font-family: Georgia, serif; }
+.hero { padding: 150px 24px 140px; background: #fcfcfa; border-bottom: 2px solid #181818; }
+.hero h1 { max-width: 900px; color: #181818; font-family: Georgia, serif; font-size: clamp(3.2rem, 7vw, 7.2rem); font-weight: 400; line-height: .98; letter-spacing: -.08em; }
+.hero p { max-width: 700px; color: #4e4e4e; font-family: Georgia, serif; font-size: 1.2rem; }
+.container { padding-top: 70px; }
+.section-label { color: #a22525; letter-spacing: .25em; }
+.article-list { gap: 0; counter-reset: article; }
+.article-card { position: relative; padding: 50px 0; background: none; border: 0; border-top: 1px solid #b7b7b0; border-radius: 0; }
+.article-card:nth-child(even) { margin-left: 15%; }
+.article-card::before { counter-increment: article; content: counter(article, decimal-leading-zero); position: absolute; top: 55px; right: 0; color: #a22525; font-family: Georgia, serif; font-size: 1.3rem; }
+.article-card:hover { box-shadow: none; border-color: #a22525; }
+.article-card .meta { color: #676760; }
+.tag { color: #a22525; background: none; padding: 0; font-family: Georgia, serif; text-transform: uppercase; letter-spacing: .1em; }
+.article-card h2 { max-width: 850px; padding-right: 48px; color: #181818; font-family: Georgia, serif; font-size: clamp(2rem, 4vw, 4rem); font-weight: 400; line-height: 1.1; letter-spacing: -.06em; }
+.article-card p { max-width: 650px; color: #555; font-family: Georgia, serif; font-size: 1.02rem; }
+.article-wrap { max-width: 800px; padding-top: 100px; }
+.article-header { padding-bottom: 32px; border-bottom: 2px solid #181818; }
+.article-header h1 { color: #181818; font-family: Georgia, serif; font-size: clamp(2.8rem, 5vw, 4.9rem); font-weight: 400; line-height: 1.07; letter-spacing: -.07em; }
+.article-body { color: #252525; font-family: Georgia, serif; font-size: 1.14rem; }
+.article-body h2, .article-body h3 { color: #181818; font-family: Georgia, serif; }
+.article-body blockquote { color: #252525; background: #f3f0eb; border-color: #a22525; }
+footer { background: #fcfcfa; border-top: 2px solid #181818; color: #555; }
+footer a { color: #a22525; }
+@media (max-width: 700px) {
+  .hero { padding: 95px 24px; }
+  .article-card:nth-child(even) { margin-left: 0; }
+}
