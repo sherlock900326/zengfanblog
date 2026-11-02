@@ -49,4 +49,5 @@ if (existsSync(contentDirectory)) {
 }
 writeFileSync(join(output, 'index.html'), index);
 writeFileSync(join(output, 'sitemap.xml'), sitemap);
+writeFileSync(join(output, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: https://${domain}/sitemap.xml\n`);
 console.log(`Built ${domain} in ${output}`);
