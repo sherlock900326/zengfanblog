@@ -16,9 +16,11 @@ for (const name of readdirSync('posts').filter(name => name.endsWith('.html'))) 
 writeFileSync(join(output, 'style.css'), readFileSync('style.css', 'utf8') + (styles[site] ? `\n${readFileSync(styles[site], 'utf8')}` : ''));
 let index = readFileSync(join(output, 'index.html'), 'utf8').replaceAll('https://blog.goodbooks.cc/', `https://${domain}/`);
 let sitemap = readFileSync(join(output, 'sitemap.xml'), 'utf8').replaceAll('https://blog.goodbooks.cc/', `https://${domain}/`);
+sitemap = sitemap.replace(/(<loc>https:\/\/[^<]+\/posts\/[^<]+)\.html(<\/loc>)/g, '$1$2');
 for (const name of readdirSync(join(output, 'posts')).filter(name => name.endsWith('.html'))) {
   const path = join(output, 'posts', name);
-  writeFileSync(path, readFileSync(path, 'utf8').replaceAll('https://blog.goodbooks.cc/', `https://${domain}/`));
+  writeFileSync(path, readFileSync(path, 'utf8')
+    .replace(/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="https://${domain}/posts/${name.slice(0, -5)}">`));
 }
 const template = readFileSync(join(output, 'posts', 'how-ai-engines-choose.html'), 'utf8');
 const month = new Intl.DateTimeFormat('en-US', { month: 'long', timeZone: 'UTC' });
@@ -32,7 +34,7 @@ if (existsSync(contentDirectory)) {
     const published = new Date(`${article.date}T00:00:00Z`);
     if (Number.isNaN(published.getTime()) || published.toISOString().slice(0, 10) !== article.date) throw new Error(`Invalid date: ${article.date}`);
     const displayDate = `${month.format(published)} ${published.getUTCFullYear()}`;
-    const url = `https://${domain}/posts/${slug}.html`;
+    const url = `https://${domain}/posts/${slug}`;
     const title = escapeHtml(article.title);
     const category = escapeHtml(article.category);
     const articleWrap = `<div class="article-wrap">\n  <a class="back" href="../index.html">All Articles</a>\n  <div class="article-header">\n    <span class="tag">${category}</span>\n    <h1>${title}</h1>\n    <div class="meta">${displayDate}</div>\n  </div>\n  <div class="article-body">\n${article.bodyHtml}\n  </div>\n</div>\n\n`;
@@ -42,11 +44,12 @@ if (existsSync(contentDirectory)) {
       .replace(/<div class="article-wrap">[\s\S]*?(?=<footer>)/, articleWrap);
     if (!page.includes(`<link rel="canonical" href="${url}">`)) throw new Error(`Template failed: ${site}`);
     writeFileSync(join(output, 'posts', `${slug}.html`), page);
-    const card = `<a class="article-card" href="posts/${slug}.html">\n      <div class="meta"><span class="tag">${category}</span><span>${displayDate}</span></div>\n      <h2>${title}</h2>\n      <p>${escapeHtml(article.summary)}</p>\n    </a>\n\n    `;
-    if (!index.includes(`href="posts/${slug}.html"`)) index = index.replace(/(<div class="article-list">\s*)/, `$1${card}`);
+    const card = `<a class="article-card" href="posts/${slug}">\n      <div class="meta"><span class="tag">${category}</span><span>${displayDate}</span></div>\n      <h2>${title}</h2>\n      <p>${escapeHtml(article.summary)}</p>\n    </a>\n\n    `;
+    if (!index.includes(`href="posts/${slug}.html"`) && !index.includes(`href="posts/${slug}"`)) index = index.replace(/(<div class="article-list">\s*)/, `$1${card}`);
     if (!sitemap.includes(url)) sitemap = sitemap.replace('</urlset>', `  <url><loc>${url}</loc><lastmod>${article.date}</lastmod></url>\n</urlset>`);
   }
 }
+index = index.replace(/(href="posts\/[^"/]+)\.html(")/g, '$1$2');
 writeFileSync(join(output, 'index.html'), index);
 writeFileSync(join(output, 'sitemap.xml'), sitemap);
 writeFileSync(join(output, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: https://${domain}/sitemap.xml\n`);
