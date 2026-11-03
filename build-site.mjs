@@ -20,6 +20,7 @@ sitemap = sitemap.replace(/(<loc>https:\/\/[^<]+\/posts\/[^<]+)\.html(<\/loc>)/g
 for (const name of readdirSync(join(output, 'posts')).filter(name => name.endsWith('.html'))) {
   const path = join(output, 'posts', name);
   writeFileSync(path, readFileSync(path, 'utf8')
+    .replaceAll('https://blog.goodbooks.cc/', `https://${domain}/`)
     .replace(/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="https://${domain}/posts/${name.slice(0, -5)}">`));
 }
 const template = readFileSync(join(output, 'posts', 'how-ai-engines-choose.html'), 'utf8');
